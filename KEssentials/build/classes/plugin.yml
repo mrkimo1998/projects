@@ -1,0 +1,115 @@
+name: KEssentials
+version: 0.1
+main: me.mrkimo.kessentials.KEssentials
+author: MrKimo
+website: mrkimo.ddns.net
+commands:
+     gethealth:
+          description: getHealth of yourself or others
+          usage: /<command> [Player]
+          permission: kessentials.gethealth
+     sethealth:
+          description: sethealth of yourself or others
+          usage: /<command> <Health> [Player]
+          permission: kessentials.sethealth
+     setmaxhealth:
+          description: setmaxhealth of yourself or others
+          usage: /<command> <Health> [Player]
+          permission: kessentials.setmaxhealth
+     aflame:
+          description: set a player aflame
+          usage: /<command> [Player]
+          permission: kessentials.aflame
+     tp:
+          description: teleport
+          usage: /<command> <Player> [Player]
+          permission: kessentials.tp
+          permission: kessentials.tp.others
+     tphere:
+          description: teleport here
+          usage: /<command> <Player>
+          permission: kessentials.tp.here
+     s:
+          description: teleport here
+          usage: /<command> <Player>
+          permission: kessentials.tp.here
+     warp:
+          description: warp
+          usage: /<command> <warp>
+          permission: kessentials.warp
+     setwarp:
+          description: setwarp
+          usage: /<command> <warpname>
+          permission: kessentials.warp.mod
+     delwarp:
+          description: delwarp
+          usage: /<command> <warpname>
+          permission: kessentials.warp.mod
+     warps:
+          description: list warps
+          usage: /<command>
+          permission: kessentials.warp
+     home:
+          description: home
+          usage: /<command> <home>
+          permission: kessentials.home
+     sethome:
+          description: sethome
+          usage: /<command> <homename>
+          permission: kessentials.home
+     delhome:
+          description: delhome
+          usage: /<command> <homename>
+          permission: kessentials.home
+     homes:
+          description: list homes
+          usage: /<command>
+          permission: kessentials.home
+     i:
+          description: various item commands
+          usage: /<command> args args args ...
+          permission: kessentials.item.give
+          permission: kessentials.item.clone
+          permission: kessentials.item.enchant
+     item:
+          description: various item commands
+          usage: /<command> args args args ...
+          permission: kessentials.item.give
+          permission: kessentials.item.clone
+          permission: kessentials.item.enchant
+     setspawn:
+          description: set spawn
+          usage: /<command>
+          permission: kessentials.spawn.set
+     spawn:
+          description: teleport to spawn
+          usage: /<command>
+     whois:
+          description: get info about player
+          usage: /<comamnd> <Player>
+          permission: kessentials.whois
+     gamemode:
+          description: set gamemode
+          usage: /<command> <mode> [Player]
+          permission: kessentials.gamemode
+          permission: kessentials.gamemode.others
+     gm:
+          description: set gamemode
+          usage: /<command> <mode> [Player]
+          permission: kessentials.gamemode
+          permission: kessentials.gamemode.others
+     speed:
+          description: get and set fly walk speeds
+          usage: /<command> [Integer]
+          permission: kessentials.speed
+     vanish:
+          description: vansih
+          usage: /<command>
+          permission: kessentials.vanish
+     v:
+          description: vansih
+          usage: /<command>
+          permission: kessentials.vanish
+permissions:
+     kessentials.signwarp.create:
+          description: permission for creating warpsigns
