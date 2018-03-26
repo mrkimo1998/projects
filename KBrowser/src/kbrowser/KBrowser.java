@@ -5,6 +5,11 @@
  */
 package kbrowser;
 
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URL;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -28,7 +33,7 @@ public class KBrowser extends Application {
     @Override
     public void start(Stage primaryStage) {
         
-        //Webview
+        //Web
         WebView wv = new WebView();
         //###
         
@@ -39,6 +44,8 @@ public class KBrowser extends Application {
         //Buttons
         Button btn_home = new Button("Home");
         Button btn_goto = new Button("Goto");
+        Button btn_reload = new Button("Reload");
+        
         btn_goto.setDefaultButton(true);
         
         
@@ -47,6 +54,8 @@ public class KBrowser extends Application {
             @Override
             public void handle(ActionEvent event) {
                 System.out.println("[Debug] Home Btn pressed!");
+                wv.getEngine().load("https://www.duckduckgo.com");
+                txt_url.setText(wv.getEngine().getLocation());
             }
         });
         btn_goto.setOnAction(new EventHandler<ActionEvent>() {
@@ -54,9 +63,29 @@ public class KBrowser extends Application {
             @Override
             public void handle(ActionEvent event) {
                 System.out.println("[Debug] goto Url of textfield: " + txt_url.getText());
+                if(!(txt_url.getText().contains("http://") || txt_url.getText().contains("https://"))) {
+                    txt_url.setText("http://" + txt_url.getText());
+                }
+                try {
+                    URL url = new URL(txt_url.getText());
+                    wv.getEngine().load(url.toString());
+                    txt_url.setText(wv.getEngine().getLocation());
+                } catch(Exception e) {
+                    wv.getEngine().loadContent("<h1> You fucked up mate!</h1>", "text/html");
+                    
+                }
+                
             }
         });
-        
+        btn_reload.setOnAction(new EventHandler<ActionEvent>() {
+            
+            @Override
+            public void handle(ActionEvent event) {
+                System.out.println("[Debug] goto Url of textfield: " + txt_url.getText());
+                wv.getEngine().reload();
+                txt_url.setText(wv.getEngine().getLocation());
+            }
+        });
         //###
         
         //Window Content
@@ -65,6 +94,7 @@ public class KBrowser extends Application {
         VBox root = new VBox();
         
         topbar.getChildren().add(btn_home);
+        topbar.getChildren().add(btn_reload);
         topbar.getChildren().add(txt_url);
         topbar.getChildren().add(btn_goto);
         contentbox.getChildren().add(wv);
@@ -81,7 +111,10 @@ public class KBrowser extends Application {
         //Formating
         txt_url.setPrefWidth(Integer.MAX_VALUE);
         btn_goto.setMinWidth(Control.USE_PREF_SIZE);
+        btn_reload.setMinWidth(Control.USE_PREF_SIZE);
         btn_home.setMinWidth(Control.USE_PREF_SIZE);
+        
+        wv.setPrefSize(Integer.MAX_VALUE, Integer.MAX_VALUE);
         
         //###
         
